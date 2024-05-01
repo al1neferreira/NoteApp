@@ -29,5 +29,12 @@
         <action
             android:id="@+id/action_editNoteFragment2_to_homeFragment2"
             app:destination="@id/homeFragment2" />
+
+        <argument
+            android:name="note"
+            app:argType="br.com.aline.noteapp.model.Note"
+            app:nullable="true"
+            />
+
     </fragment>
 </navigation>

@@ -5,8 +5,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import br.com.aline.noteapp.data.local.NoteDatabase
+import br.com.aline.noteapp.repository.NoteRepository
+import br.com.aline.noteapp.viewmodel.NoteViewModel
+import br.com.aline.noteapp.viewmodel.NoteViewModelFactory
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var noteViewModel: NoteViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -19,5 +27,15 @@ class MainActivity : AppCompatActivity() {
         }
         */
 
+        setupViewModel()
     }
+
+    private fun setupViewModel(){
+        val noteRepository = NoteRepository(NoteDatabase(this))
+        val viewModelProviderFactory = NoteViewModelFactory(application, noteRepository)
+        noteViewModel = ViewModelProvider(this, viewModelProviderFactory)[NoteViewModel::class.java]
+
+    }
+
+
 }

@@ -4,7 +4,7 @@ plugins {
     id ("kotlin-kapt")
     id ("kotlin-parcelize")
     id("com.google.devtools.ksp")
-    id ("androidx.navigation.safeargs")
+    id ("androidx.navigation.safeargs.kotlin")
 
 }
 
@@ -45,6 +45,7 @@ android {
 
 dependencies {
 
+    implementation(libs.play.services.ads.lite)
     val room_version = "2.6.1"
 
 
