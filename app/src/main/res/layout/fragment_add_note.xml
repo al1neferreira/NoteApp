@@ -18,11 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins"
             android:text="Add note"
             android:textColor="@color/blue_black"
             android:textSize="24sp"
             android:textStyle="bold" />
+
         <EditText
             android:id="@+id/addNoteTitle"
             android:layout_width="match_parent"
@@ -30,20 +30,21 @@
             android:hint="Enter the title"
             android:padding="12dp"
             android:textSize="20sp"
+            android:textColor="@color/black"
             android:layout_below="@id/addNoteHeading"
             android:background="@drawable/blue_border"
             android:layout_marginTop="16dp"
-            android:maxLines="1"
-            android:fontFamily="@font/poppins"/>
+            android:maxLines="1"/>
+
         <EditText
             android:id="@+id/addNoteDesc"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="150dp"
             android:hint="Enter the description"
             android:gravity="top"
             android:padding="12dp"
             android:textSize="18sp"
-            android:fontFamily="@font/poppins"
             android:background="@drawable/blue_border"
             android:layout_below="@id/addNoteTitle"
             android:layout_marginTop="12dp" />

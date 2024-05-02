@@ -1,12 +1,12 @@
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
     id ("kotlin-kapt")
     id ("kotlin-parcelize")
     id("com.google.devtools.ksp")
     id ("androidx.navigation.safeargs.kotlin")
-
 }
+
 
 android {
     namespace = "br.com.aline.noteapp"
@@ -45,8 +45,10 @@ android {
 
 dependencies {
 
-    implementation(libs.play.services.ads.lite)
     val room_version = "2.6.1"
+
+    val appsearch_version = "1.1.0-alpha03"
+
 
 
     implementation(libs.androidx.core.ktx)
@@ -58,9 +60,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    //Room Database
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
@@ -89,10 +88,45 @@ dependencies {
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
 
-    // Annotation processor
-    ksp("androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // To use Kotlin Symbol Processing (KSP)
+    ksp("androidx.room:room-compiler:$room_version")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+
+    // optional - RxJava2 support for Room
+    implementation("androidx.room:room-rxjava2:$room_version")
+
+    // optional - RxJava3 support for Room
+    implementation("androidx.room:room-rxjava3:$room_version")
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation("androidx.room:room-guava:$room_version")
+
+    // optional - Test helpers
+    testImplementation("androidx.room:room-testing:$room_version")
+
+    // optional - Paging 3 Integration
+    implementation("androidx.room:room-paging:$room_version")
+
+    //AppSearch
+
+    implementation("androidx.appsearch:appsearch:$appsearch_version")
+    // Use annotationProcessor instead of kapt if writing Java classes
+    kapt("androidx.appsearch:appsearch-compiler:$appsearch_version")
+
+    implementation("androidx.appsearch:appsearch-local-storage:$appsearch_version")
+    // PlatformStorage is compatible with Android 12+ devices, and offers additional features
+    // to LocalStorage.
+    implementation("androidx.appsearch:appsearch-platform-storage:$appsearch_version")
+
+
 
 }
+
 
 
 
